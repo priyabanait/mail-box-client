@@ -646,6 +646,14 @@ video {
   margin-left: 5rem;
 }
 
+.ml-24 {
+  margin-left: 6rem;
+}
+
+.ml-28 {
+  margin-left: 7rem;
+}
+
 .flex {
   display: flex;
 }

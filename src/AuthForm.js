@@ -1,9 +1,7 @@
 import { useRef, useState} from 'react';
 
-
 const AuthForm = () => {
-    
-  
+   
   const[action,setAction]=useState(true);
   const emailRef=useRef();
   const passwordRef=useRef();
@@ -40,8 +38,12 @@ const res= await fetch(url,{
  
 if (res.ok) {
   const data = await res.json();
-  
-  console.log('User has successfully signed up');
+  if(action){
+    console.log('User has successfully log in');
+  }
+  else{
+    console.log('User has successfully sign up');
+  }
  if(!action){
 
   try{
@@ -100,7 +102,7 @@ if (res.ok) {
             </div>}
             <button onClick={submitHandler} className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white'>Sign In</button>
             <p className='text-center mt-8 text-blue-500'>Forget password</p>
-           <button type='button' className='text-center ml-20 mt-8 text-purple-500' onClick={signUpHandle}>
+           <button type='button' className='text-center ml-28 mt-8 text-purple-500' onClick={signUpHandle}>
            {!action? 'Have an account?Login':"Don't have an account?Sign Up"}</button>
             
         </form>
