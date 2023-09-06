@@ -1,7 +1,7 @@
 import { useRef, useState} from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const AuthForm = () => {
-   
+   const navigate=useNavigate();
   const[action,setAction]=useState(true);
   const emailRef=useRef();
   const passwordRef=useRef();
@@ -40,6 +40,7 @@ if (res.ok) {
   const data = await res.json();
   if(action){
     console.log('User has successfully log in');
+    navigate('/profile');
   }
   else{
     console.log('User has successfully sign up');
