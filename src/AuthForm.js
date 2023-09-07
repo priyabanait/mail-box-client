@@ -40,7 +40,7 @@ if (res.ok) {
   const data = await res.json();
   if(action){
     console.log('User has successfully log in');
-    navigate('/profile');
+    navigate('/compose');
   }
   else{
     console.log('User has successfully sign up');
@@ -70,7 +70,7 @@ if (res.ok) {
             console.error('Error updating account:', error);
   
           }
-          
+          navigate('/confirmEmail')
  }
   
  
@@ -101,7 +101,7 @@ if (res.ok) {
                
                 <input placeholder="Confirm password"ref={passwordRef}  className='border relative bg-gray-100 p-2' type="password" />
             </div>}
-            <button onClick={submitHandler} className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white'>Sign In</button>
+            <button onClick={submitHandler} className='w-full text-lg py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white'>{!action?'Sign Up':'Login'}</button>
             <p className='text-center mt-8 text-blue-500'>Forget password</p>
            <button type='button' className='text-center ml-28 mt-8 text-purple-500' onClick={signUpHandle}>
            {!action? 'Have an account?Login':"Don't have an account?Sign Up"}</button>

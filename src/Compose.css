@@ -1,0 +1,17 @@
+.footer{
+    display:flex;
+    
+}
+.right svg{
+    margin-left: 10px;
+    color: gray;
+    font-size: 30px;
+    border-radius: 3px;
+    padding: 3px;
+    transition: 0.2 linear 0s;
+    cursor: pointer;
+}
+.right svg:hover{
+    background-color: azure;
+    color: black;
+}
