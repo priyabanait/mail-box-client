@@ -40,7 +40,7 @@ if (res.ok) {
   const data = await res.json();
   if(action){
     console.log('User has successfully log in');
-    navigate('/compose');
+    navigate('/inbox');
   }
   else{
     console.log('User has successfully sign up');

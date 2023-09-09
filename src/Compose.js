@@ -1,5 +1,5 @@
 
-import './Compose.css';
+
 import React,{useState} from 'react';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -31,9 +31,9 @@ const [subject,setSubject]=useState('');
     if(messageContent.trim()===''){
         alert('Please enter Message')
     }
-    localStorage.setItem('mail',to);
-    const mail=localStorage.getItem('mail');
-    db.collection(mail).add({
+    
+   
+    db.collection("emails").add({
         to,
         subject,
         messageContent,
@@ -44,23 +44,23 @@ const [subject,setSubject]=useState('');
     }
   return (
     <div>
-      <div className='bg-slate-300 mt-2'>
+      <div className='bg-slate-300 mt-2 ml-4'>
    <span className='p-4 font-bold'>New Message</span>
-<hr></hr>
+
       </div>
 <form onSubmit={formSubmit}>
-      <div className='p-4'>
+      <div className='p-2 ml-4 mt-2' style={{ border:'0.1px dotted grey', borderRadius:'5px'}}>
       <label> To</label>
- <input type='email' placeholder='example@gmail.com' className='outline-0 p-2' value={to} onChange={(e)=>setTo(e.target.value)}></input>
-  <hr></hr>
+ <input type='email'  placeholder='example@gmail.com' className='outline-0 p-2' value={to} onChange={(e)=>setTo(e.target.value)}></input>
+  
   </div>
 
-      <div className='p-4'>
+      <div className='p-2 ml-4 mt-2' style={{ border:'0.1px dotted grey', borderRadius:'5px'}}>
  
- <input type='text' className='outline-0' placeholder='Subject' value={subject} onChange={(e)=>setSubject(e.target.value)}></input>
-
- <hr></hr>
- <div className= 'mt-2' style={{ height: '400px' }}>
+ <input type='text'  className='outline-0' placeholder='Subject' value={subject} onChange={(e)=>setSubject(e.target.value)}></input>
+</div>
+ 
+ <div className= 'mt-4 ml-4' style={{ height: '400px',border:'0.1px dotted grey', borderRadius:'5px'}}>
           <Editor
           
             editorState={editorState}
@@ -72,15 +72,13 @@ const [subject,setSubject]=useState('');
           />
         </div>
 	
- <hr></hr>
-      </div>
-      <div className='footer'>
+ 
+      
+      <div>
       <div className='pl-4'>
-    <button className='w-28 text-lg bg-indigo-600 hover:bg-indigo-500  text-white'>Send </button>
+    <button className='w-28 text-lg bg-indigo-600 hover:bg-indigo-500  text-white mt-4'>Send </button>
       </div>
-   <div className='right'>
-   
-   </div>
+  
       </div>
       </form>
     </div>
