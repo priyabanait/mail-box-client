@@ -1,5 +1,3 @@
-
-
 import React,{useState} from 'react';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -12,8 +10,8 @@ import 'firebase/firestore';
 
 export default function Compose() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-const [to,setTo]=useState('');
-const [subject,setSubject]=useState('');
+    const [to,setTo]=useState('');
+    const [subject,setSubject]=useState('');
 
     const onEditorStateChange = (newEditorState) => {
       setEditorState(newEditorState);
@@ -37,10 +35,12 @@ const [subject,setSubject]=useState('');
         to,
         subject,
         messageContent,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        read: false,
     })
     setTo('');
     setSubject('');
+   
     }
   return (
     <div>
@@ -60,7 +60,7 @@ const [subject,setSubject]=useState('');
  <input type='text'  className='outline-0' placeholder='Subject' value={subject} onChange={(e)=>setSubject(e.target.value)}></input>
 </div>
  
- <div className= 'mt-4 ml-4' style={{ height: '400px',border:'0.1px dotted grey', borderRadius:'5px'}}>
+ <div className= 'mt-4 ml-4 p-4' style={{ height: '400px',border:'0.1px dotted grey', borderRadius:'5px'}}>
           <Editor
           
             editorState={editorState}

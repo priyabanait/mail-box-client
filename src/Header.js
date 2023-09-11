@@ -8,7 +8,10 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import { FaRegTrashAlt} from "react-icons/fa";
 
 import StarRateIcon from '@mui/icons-material/StarRate';
-export default function Header() {
+export default function Header(props) {
+  function onLogin(){
+props.onLogin();
+  }
   return (
     <div className='flex'>
       <div className='bg-black'>
@@ -19,14 +22,14 @@ export default function Header() {
       
       
       <div className='font m-10'>
-      <Link to='/compose' className='text-lg p-2 bg-indigo-600 hover:bg-indigo-500  text-white mt-2'>
+      <Link to='/compose' className='text-lg p-4 active: focus:bg-green-600 bg-indigo-600 hover:bg-indigo-500  text-white mt-2'>
       Compose</Link>
-       <Link to='inbox' className='flex mt-10 '> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p></Link>
-      <Link to='/sent' className='flex mt-5'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></Link>
+       <Link to='/inbox' className='flex mt-10 focus:bg-green-600 p-2'> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p></Link>
+      <Link to='/sent' className='flex mt-5 p-2 focus:bg-green-600'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></Link>
          
-        <Link className='flex mt-5'><FaRegTrashAlt></FaRegTrashAlt><p className=' text-white pl-4 mt-2'>Trash</p></Link>
-      <Link className='flex mt-5'> <StarRateIcon></StarRateIcon> <p className=' text-white pl-4 mt-2'>Starred</p></Link>
-      <button className='mt-48 w-28 text-lg bg-slate-50 hover:bg-slate-200  text-black'>Logout</button>
+        <Link to='/trash' className='flex mt-5 p-2 focus:bg-green-600'><FaRegTrashAlt></FaRegTrashAlt><p className=' text-white pl-4 mt-2'>Trash</p></Link>
+      <Link to='/starred' className='flex mt-5 p-2 focus:bg-green-600'> <StarRateIcon></StarRateIcon> <p className=' text-white pl-4 mt-2'>Starred</p></Link>
+      <button className='w-28 mt-36 text-lg bg-slate-50 hover:bg-slate-300  text-black' onClick={onLogin}>Logout</button>
       </div>
       </div>
      
