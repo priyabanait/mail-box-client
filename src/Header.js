@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import { BsFillSendCheckFill } from "react-icons/bs";
 
 import InboxIcon from '@mui/icons-material/Inbox';
@@ -9,8 +9,8 @@ import { FaRegTrashAlt} from "react-icons/fa";
 
 import StarRateIcon from '@mui/icons-material/StarRate';
 export default function Header(props) {
-  function onLogin(){
-props.onLogin();
+  function onLogout(){
+props.onLogout();
   }
   return (
     <div className='flex'>
@@ -22,14 +22,14 @@ props.onLogin();
       
       
       <div className='font m-10'>
-      <Link to='/compose' className='text-lg p-4 active: focus:bg-green-600 bg-indigo-600 hover:bg-indigo-500  text-white mt-2'>
-      Compose</Link>
-       <Link to='/inbox' className='flex mt-10 focus:bg-green-600 p-2'> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p></Link>
-      <Link to='/sent' className='flex mt-5 p-2 focus:bg-green-600'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></Link>
+      <NavLink to='/compose' className='text-lg p-4  bg-indigo-600 hover:bg-indigo-500  text-white mt-2'>
+      Compose</NavLink>
+       <NavLink to='/inbox' className='flex mt-10 p-2'> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p></NavLink>
+      <NavLink to='/sent' className='flex mt-5 p-2'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></NavLink>
          
-        <Link to='/trash' className='flex mt-5 p-2 focus:bg-green-600'><FaRegTrashAlt></FaRegTrashAlt><p className=' text-white pl-4 mt-2'>Trash</p></Link>
-      <Link to='/starred' className='flex mt-5 p-2 focus:bg-green-600'> <StarRateIcon></StarRateIcon> <p className=' text-white pl-4 mt-2'>Starred</p></Link>
-      <button className='w-28 mt-36 text-lg bg-slate-50 hover:bg-slate-300  text-black' onClick={onLogin}>Logout</button>
+        <NavLink to='/trash' className='flex mt-5 p-2 '><FaRegTrashAlt></FaRegTrashAlt><p className=' text-white pl-4 mt-2'>Trash</p></NavLink>
+      <NavLink to='/starred' className='flex mt-5 p-2 '> <StarRateIcon></StarRateIcon> <p className=' text-white pl-4 mt-2'>Starred</p></NavLink>
+      <button className='w-28 mt-36 text-lg bg-slate-50 hover:bg-slate-300  text-black' onClick={onLogout}>Logout</button>
       </div>
       </div>
      

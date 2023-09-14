@@ -1,6 +1,6 @@
 import { useRef, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-const AuthForm = () => {
+const AuthForm = (props) => {
    const navigate=useNavigate();
   const[action,setAction]=useState(true);
   const emailRef=useRef();
@@ -45,35 +45,8 @@ if (res.ok) {
   else{
     console.log('User has successfully sign up');
   }
- if(!action){
-
-  try{
-    const resVerify= fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCuO-qvcUY3-qqpneiY5mWMeb08dAsIdKs',{
-          method:'POST',
-        
-          body:JSON.stringify({
-            requestType:"VERIFY_EMAIL",
-              idToken:data.idToken,
-              }),
-              
-              headers:{
-                  'Content-Type':'application/json'
-                }
-        })
-          if(resVerify.ok){
-          
-            console.log("Success");
-           
-          }
-         }
-          catch (error) {
-            console.error('Error updating account:', error);
-  
-          }
-          navigate('/confirmEmail')
- }
-  
  
+ await props.onLogin(data.idToken);
 } else {
   alert('Authentication failed!')
 }

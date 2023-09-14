@@ -11,20 +11,19 @@ export default function Sent() {
   const navigate = useNavigate();
   const mail = useSelector((state) => state.mail);
   useEffect(() => {
-    const unsubscribe = db.collection('emails').where("to", "==", mail)
+    const unsubscribe = db.collection('emails').where("from", "==", mail)
     .onSnapshot((snapshot) => {
       const newEmails = snapshot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
         isChecked: false, 
       }));
-  
+
       setEmails(newEmails);
     });
-  
+
     return () => unsubscribe();
   }, []);
-  
 
   const markAsRead = (emailId) => {
     db.collection('emails')
@@ -98,12 +97,12 @@ export default function Sent() {
               <div
                 className='flex items-center ml-4 space-x-4'
                 onClick={(e) => {
-                  navigate(`/emailDetail/${item.id}`);
+                  navigate(`/sentDetail/${item.id}`);
                   markAsRead(item.id);
                 }}
               >
                 <div className='flex-shrink-0 w-80'>
-                  <b >{item.data.from}</b>
+                  <b >{item.data.to}</b>
                 </div>
                 <div className='m-2 truncate  ml-40  flex flex-row basis-96 align-middle '>
                 <span className='truncate w-96'>
