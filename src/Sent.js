@@ -25,14 +25,7 @@ export default function Sent() {
     return () => unsubscribe();
   }, []);
 
-  const markAsRead = (emailId) => {
-    db.collection('emails')
-      .doc(emailId)
-      .update({
-        read: true,
-      });
-  };
-
+ 
   const checkHandler = (e, emailId) => {
     const { checked } = e.target;
 
@@ -73,18 +66,12 @@ export default function Sent() {
       <hr className='my-4'></hr>
       {emails.length > 0 ? (
         <div className='space-y-4'>
-          {emails.map((item, i) => (
+          {emails.map((item) => (
             <div
               key={item.id}
-              className={`flex items-center p-2 shadow-md hover:bg-gray-100 ${
-                item.data.read ? 'text-gray-600' : 'text-black'
-              }`}
+              className={'flex items-center p-2 shadow-md hover:bg-gray-100 '}
             >
-              <div className='flex-shrink-0'>
-                {item.data.read ? null : (
-                  <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
-                )}
-              </div>
+              
               <input
                 type='checkbox'
                 className=' mr-2 w-10 mt-1'
@@ -98,7 +85,7 @@ export default function Sent() {
                 className='flex items-center ml-4 space-x-4'
                 onClick={(e) => {
                   navigate(`/sentDetail/${item.id}`);
-                  markAsRead(item.id);
+                 
                 }}
               >
                 <div className='flex-shrink-0 w-80'>

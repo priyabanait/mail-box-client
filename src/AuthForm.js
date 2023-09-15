@@ -40,7 +40,7 @@ if (res.ok) {
   const data = await res.json();
   if(action){
     console.log('User has successfully log in');
-    navigate('/inbox');
+   
   }
   else{
     console.log('User has successfully sign up');
@@ -50,7 +50,7 @@ if (res.ok) {
 } else {
   alert('Authentication failed!')
 }
-
+navigate('/inbox');
 }
   return (
     <div className='w-full h-screen flex'>

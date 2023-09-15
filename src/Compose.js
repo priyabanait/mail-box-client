@@ -28,14 +28,15 @@ export default function Compose() {
     if (to === '') {
       alert('Please enter Recipient');
     }
-    if (subject === '') {
+   else if (subject === '') {
       alert('Please enter Subject');
     }
-    if (messageContent.trim() === '') {
+    else if (messageContent.trim() === '') {
       alert('Please enter Message');
     }
-    if (to === mail) {
+    else if (to === mail) {
       alert('You cannot send an email to yourself.');
+      return;
     }
     db.collection('emails').add({
       from:mail,
@@ -53,6 +54,7 @@ export default function Compose() {
     setMessage('');
     setEditorState(EditorState.createEmpty()); 
   }
+  
 
   return (
     <div>

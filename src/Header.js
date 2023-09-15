@@ -24,17 +24,15 @@ props.onLogout();
       <div className='font m-10'>
       <NavLink to='/compose' className='text-lg p-4  bg-indigo-600 hover:bg-indigo-500  text-white mt-2'>
       Compose</NavLink>
-       <NavLink to='/inbox' className='flex mt-10 p-2'> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p></NavLink>
-      <NavLink to='/sent' className='flex mt-5 p-2'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></NavLink>
+       <NavLink to='/inbox' className='flex mt-10 p-2'> <InboxIcon></InboxIcon><p className=' text-white pl-4 mt-2'>Inbox</p><div className='mt-2 ml-4 flex text-orange-200'><div>{props.unread}<div>unread</div></div> </div></NavLink>
+       
+      <NavLink to='/sent' className='flex p-2'> <BsFillSendCheckFill></BsFillSendCheckFill> <p className=' text-white pl-4 mt-2'>Sent</p></NavLink>
          
         <NavLink to='/trash' className='flex mt-5 p-2 '><FaRegTrashAlt></FaRegTrashAlt><p className=' text-white pl-4 mt-2'>Trash</p></NavLink>
       <NavLink to='/starred' className='flex mt-5 p-2 '> <StarRateIcon></StarRateIcon> <p className=' text-white pl-4 mt-2'>Starred</p></NavLink>
       <button className='w-28 mt-36 text-lg bg-slate-50 hover:bg-slate-300  text-black' onClick={onLogout}>Logout</button>
       </div>
       </div>
-     
-      
-      
-    </div>
+      </div>
   )
 }

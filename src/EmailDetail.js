@@ -31,8 +31,8 @@ const navigate=useNavigate();
   }
   const deleteHandler = () => {
     db.collection('emails')
-      .doc(id).
-      delete()
+      .doc(id)
+      .delete()
        
      navigate('/inbox');
  
