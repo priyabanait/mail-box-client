@@ -3,6 +3,7 @@ import { db } from './firebase';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import './Header.css';
 
@@ -11,7 +12,7 @@ export default function Sent() {
   const [selectedEmails, setSelectedEmails] = useState([]);
   const navigate = useNavigate();
   const mail = useSelector((state) => state.mail);
-
+const [loading, setLoading] = useState(true);
   useEffect(() => {
     const unsubscribe = db.collection('emails')
       .where("to", "==", mail)
@@ -23,6 +24,7 @@ export default function Sent() {
           isChecked: false,
         }));
         setEmails(newEmails);
+        setLoading(false);
       });
 
     return () => {
@@ -87,7 +89,10 @@ export default function Sent() {
       </div>
 
       <hr className='my-4'></hr>
-      {emails.length > 0 ? (
+      {loading ? ( // Show loading indicator when loading is true
+        <b>Loading...</b>
+      ) :
+      emails.length > 0 ? (
         <div className='space-y-4'>
           {emails.map((item, i) => (
             <div

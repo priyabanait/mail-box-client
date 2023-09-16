@@ -34,7 +34,7 @@ const navigate=useNavigate();
       .doc(id)
       .delete()
        
-     navigate('/inbox');
+     navigate('/');
  
      // Clear the selected emails array
      setEmail([]);
@@ -48,7 +48,7 @@ const navigate=useNavigate();
         ></DeleteForeverIcon>
       </div>
    <div className=' flex m-4'> 
-   <ArrowBackIcon onClick={e=>navigate('/inbox')}></ArrowBackIcon>
+   <ArrowBackIcon onClick={e=>navigate('/')}></ArrowBackIcon>
    <p className='ml-2'> Back</p>
    </div>
    <hr></hr>

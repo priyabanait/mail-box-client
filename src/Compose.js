@@ -85,6 +85,7 @@ export default function Compose() {
 
         <div className="mt-4 ml-4 p-4" style={{ height: '400px', border: '0.1px dotted grey', borderRadius: '5px' }}>
           <Editor
+          placeholder='Start writing...'
             editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"

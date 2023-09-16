@@ -50,7 +50,8 @@ if (res.ok) {
 } else {
   alert('Authentication failed!')
 }
-navigate('/inbox');
+navigate('/');
+
 }
   return (
     <div className='w-full h-screen flex'>
@@ -60,6 +61,7 @@ navigate('/inbox');
         </div>
         <div className='p-4 flex flex-col justify-around'>
         <form className='max-w-[400px] w-full mx-auto bg-white'>
+        <h2 className='text-4xl font-bold text-center py-4'>Welcome to Mail Box</h2>
             <h2 className='text-4xl font-bold text-center py-4'>{!action?"Sign Up":"Login"}</h2>
             
             <div className='flex flex-col mb-4'>
@@ -72,11 +74,11 @@ navigate('/inbox');
             </div>
            {!action && <div className='flex flex-col '>
                
-                <input placeholder="Confirm password"ref={passwordRef}  className='border relative bg-gray-100 p-2' type="password" />
+                <input placeholder="Confirm password" ref={passwordRef}  className='border relative bg-gray-100 p-2' type="password" />
             </div>}
             <button onClick={submitHandler} className='w-full text-lg py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white'>{!action?'Sign Up':'Login'}</button>
-            <p className='text-center mt-8 text-blue-500'>Forget password</p>
-           <button type='button' className='text-center ml-28 mt-8 text-purple-500' onClick={signUpHandle}>
+            
+           <button type='button' className='w-full text-lg py-3 mt-8 relative text-purple-500' onClick={signUpHandle}>
            {!action? 'Have an account?Login':"Don't have an account?Sign Up"}</button>
             
         </form>

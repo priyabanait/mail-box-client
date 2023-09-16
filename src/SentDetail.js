@@ -34,7 +34,7 @@ const navigate=useNavigate();
       .doc(id)
       .delete()
        
-     navigate('/inbox');
+     navigate('/sent');
  
      // Clear the selected emails array
      setEmail([]);

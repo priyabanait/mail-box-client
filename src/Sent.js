@@ -11,7 +11,7 @@ export default function Sent() {
   const navigate = useNavigate();
   const mail = useSelector((state) => state.mail);
   useEffect(() => {
-    const unsubscribe = db.collection('emails').where("from", "==", mail)
+    const unsubscribe = db.collection('emails').orderBy("timestamp", "desc").where("from", "==", mail)
     .onSnapshot((snapshot) => {
       const newEmails = snapshot.docs.map((doc) => ({
         id: doc.id,

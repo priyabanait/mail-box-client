@@ -29,6 +29,9 @@ export default function App() {
       
       localStorage.removeItem("token");
     };
+    setTimeout(() => {
+      handleLogout();
+    }, 9000000);
     useEffect(() => {
       const unsubscribe = db.collection('emails')
         .where("to", "==", mail)
@@ -58,7 +61,7 @@ export default function App() {
         <div className='flex'>
           <Header onLogout={handleLogout} unread={unreadCount}></Header>
           <Routes>
-            <Route path="/inbox" element={<Inbox />} />
+            <Route path="/" element={<Inbox />} />
             <Route path="/compose" element={<Compose />} />
             <Route path="/sentDetail/:id" element={<SentDetail />} />
             <Route path="/emailDetail/:id" element={<EmailDetail />} />
